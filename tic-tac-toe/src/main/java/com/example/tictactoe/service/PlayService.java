@@ -14,14 +14,7 @@ public class PlayService {
     @Autowired
     GameService gameService;
 
-    // game - player1, player2, turn, board
-    // board - row , col
-    // player1  - name = tanvir, symbol = x, id = 3333
-    // player2 - name = jahangir, symbol = 0, id = 2894;
-    // turn -  name = jahangir, symbol = x, id = 2894
-
-    // player1request - row-0, col -0, playerId - 3333, gameId - 3444
-    // player2request - row-0, col -1, playerId - 2894, gameId - 3444
+    
 
     public GameResponse play(PlayRequest playRequest) {
          Game game = gameService.gameMap.get(playRequest.getGameId());
@@ -29,9 +22,9 @@ public class PlayService {
         if(game == null ) return null;
         // is your turn and is spot open or empty
         if(game.getTurn().getPlayerId().equals(playRequest.getPlayerId()) && game.getBoard()[playRequest.getRow()][playRequest.getCol()] == null){
-            game.getBoard()[playRequest.getRow()][playRequest.getCol()] = game.getTurn().getSymbol();    // i have problem here to understand
+            game.getBoard()[playRequest.getRow()][playRequest.getCol()] = game.getTurn().getSymbol();    
 
-                                                                                                        // now i got it
+                                                                                                  
             // update turn to player2
             updatePlayerTurn(game);
 
